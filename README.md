@@ -1,4 +1,4 @@
-# React + Laravel = show list of addresses
+# React + Laravel = News Aggregator project
 
 **PHP 8.1 + MySQL 8 + Nginx 1.21.4 + Adminer**
 
@@ -12,12 +12,21 @@ Add to `/etc/hosts` file lines:
 127.0.0.1 adminer.test
 ```
 
-install node modules for React local testing
+### front-end (React)
 
+install node modules
 ```
 cd frontend
 npm install
 ```
+Inside `/frontend/.env` specify values for 3 testing news API keys:
+```
+REACT_APP_GUARDIAN_KEY=
+REACT_APP_NEWSAPI_KEY=
+REACT_APP_NYTIMES_KEY=
+```
+
+### back-end (Laravel)
 
 ## Docker
 
@@ -44,12 +53,6 @@ php artisan migrate
 php artisan db:seed
 ```
 
-## Test
-
-```
-php artisan test
-```
-
 ## Launch
 
 Front-end is built in React
@@ -58,4 +61,5 @@ Front-end is built in React
 http://localhost:3000/
 ```
 
-all API calls are made to backend using `Header:Authorization` key. The value of this keys is retrived from `.env` files from both projects (Laravel & React) and it must be matching. User's uuid is stored in localStorage 
+all API calls are made to backend using `Header:Authorization` key. The value of this keys is retrived from `.env` files from both projects (Laravel & React) and it must be matching. User's uuid is stored in localStorage.
+
