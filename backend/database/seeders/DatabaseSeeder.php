@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        DB::table('addresses')->truncate();
         DB::table('users')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
@@ -24,13 +23,6 @@ class DatabaseSeeder extends Seeder
             'id' => '97d224d7-7df2-4aa6-b116-3deef04c175b',
             'name' => 'Test User',
             'email' => 'sergey@example.com',
-            'password' => bcrypt('password')
-        ]);
-
-        \App\Models\User::factory()->create([
-            'id' => '97d224d7-7df2-4aa6-b116-3deef0411111',
-            'name' => 'User with no addresses',
-            'email' => 'norecord@example.com',
             'password' => bcrypt('password')
         ]);
     }

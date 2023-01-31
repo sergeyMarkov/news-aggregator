@@ -44,15 +44,23 @@ function Dashboard() {
 			})
 			.get(`${ApiDomainUrl}/preferences/` + JSON.parse(user_id))
 			.then(result => {
-				const res = result.data.data;
-                setState({
-                    ...state,
-                    showNewsAPI: res.newsAPI,
-                    showNYTimes: res.NYTimes,
-                    showGuardian: res.guardian,
-                    isLoaded: true
-                });
-                getNewsHelper(res.newsAPI, res.NYTimes, res.guardian);
+                if (result.data.data) {
+                    const res = result.data.data;
+                    setState({
+                        ...state,
+                        showNewsAPI: res.newsAPI,
+                        showNYTimes: res.NYTimes,
+                        showGuardian: res.guardian,
+                        isLoaded: true
+                    });
+                    getNewsHelper(res.newsAPI, res.NYTimes, res.guardian);
+                }  else {
+                    setState({
+                        ...state,
+                        isLoaded: true
+                    });
+                }
+				
 			});
     // eslint-disable-next-line
     }, [state.searchText, state.searchDate, state.searchCategory]);

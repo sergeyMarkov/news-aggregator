@@ -12,14 +12,19 @@ Add to `/etc/hosts` file lines:
 127.0.0.1 adminer.test
 ```
 
+Copy `/.env.example` into `/.env` file and specify all needed settings.
+
 ### front-end (React)
 
-install node modules
+install `node_modules`
+
 ```
 cd frontend
 npm install
 ```
-Inside `/frontend/.env` specify values for 3 testing news API keys:
+
+It's been selected three types of News API: <a href="https://open-platform.theguardian.com/access/">The Guardian</a>, <a href="https://newsapi.org/">NewsAPI</a> and <a href="https://developer.nytimes.com/">The New York Times News</a>. The corresponding API keys are needed to be specifed in `/frontend/.env` file:
+
 ```
 REACT_APP_GUARDIAN_KEY=
 REACT_APP_NEWSAPI_KEY=
@@ -27,6 +32,15 @@ REACT_APP_NYTIMES_KEY=
 ```
 
 ### back-end (Laravel)
+
+install vendor modules, create database and setup initial dataset:
+
+```
+cd backend
+composer install
+php artisan migrate
+php artisan db:seed
+```
 
 ## Docker
 
@@ -43,15 +57,6 @@ docker-compose up --build
 ![adminer-db](./doc/adminer-db.png)
 
 ![adminer-db](./doc/adminer-db-logged.png)
-
-## Pre-launch
-
-Create database and prefill it with testing fake data:
-
-```
-php artisan migrate
-php artisan db:seed
-```
 
 ## Launch
 
