@@ -17,13 +17,13 @@ class ApiValidate
      */
     public function handle(Request $request, Closure $next)
     {
-        // if ((!$request->header('Authorization') ||
-        //         $request->header('Authorization') !== env('API_KEY')) ||
-        //     (!$request->header('user_id')) ||
-        //     (count(Address::where(['user_id' => $request->header('user_id')])->get()) == 0)
-        // ) {
-        //     return response()->json(['success' => false, 'message' => 'Unauthorized API request'], 401);
-        // }
+        if ((!$request->header('Authorization') ||
+                $request->header('Authorization') !== env('API_KEY')) ||
+            (!$request->header('user_id')) ||
+            (count(Address::where(['user_id' => $request->header('user_id')])->get()) == 0)
+        ) {
+            return response()->json(['success' => false, 'message' => 'Unauthorized API request'], 401);
+        }
         return $next($request);
     }
 }
