@@ -1,40 +1,52 @@
-# React + Laravel = News Aggregator project
+# News Aggregator Website 
+The task is to create a news aggregator website designed to collect articles from various sources and present them in a user-friendly and visually appealing format. This project demands the utilization of Laravel for the backend development and React for the frontend implementation.
 
-**PHP 8.1 + MySQL 8 + Nginx 1.21.4 + Adminer**
+## Requirements:
+### User Authentication and Registration
+Users must have the capability to register an account and subsequently log in to the website, facilitating the preservation of their preferences and settings.
+
+###  Article Search and Filtering
+The system should enable users to conduct article searches based on keywords and refine the search results by a date, category, and source.
+
+### Personalized News Feed
+Users should be able to customize their news feed by selecting their preferred sources, categories, and authors.
+
+### Mobile-Responsive Design
+The website's layout and functionality must be optimized for seamless viewing across various mobile devices.
+
+
+#### Tech stack
+***Backend: PHP 8.1 + MySQL 8 + Nginx 1.21.4 + Adminer***
 
 ## Setup
 
-See definitions in the `.env` files.
+Refer to the configuration settings in the `.env` files.
 
-Add to `/etc/hosts` file lines:
-
+Add the following lines to the `/etc/hosts` file:
 ```
 127.0.0.1 adminer.test
 ```
 
-Copy `/.env.example` into `/.env` file and specify all needed settings.
+- Duplicate `/.env.example` into `/.env` file and specify all relevant settings.
 
-### front-end (React)
+### Frontend (React)
 
-install `node_modules`
-
+install required `node_modules`:
 ```
 cd frontend
 npm install
 ```
 
-It's been selected three types of News API: <a href="https://open-platform.theguardian.com/access/">The Guardian</a>, <a href="https://newsapi.org/">NewsAPI</a> and <a href="https://developer.nytimes.com/">The New York Times News</a>. The corresponding API keys are needed to be specifed in `/frontend/.env` file:
-
+Three types of News API have been selected: <a href="https://open-platform.theguardian.com/access/">The Guardian</a>, <a href="https://newsapi.org/">NewsAPI</a> and <a href="https://developer.nytimes.com/">The New York Times News</a>. The corresponding API keys are needed to be specifed in `/frontend/.env` file:
 ```
 REACT_APP_GUARDIAN_KEY=
 REACT_APP_NEWSAPI_KEY=
 REACT_APP_NYTIMES_KEY=
 ```
 
-### back-end (Laravel)
+### Backend (Laravel)
 
-install vendor modules, create database and setup initial dataset:
-
+Install vendor modules, create the database and setup the initial dataset:
 ```
 cd backend
 composer install
@@ -44,8 +56,7 @@ php artisan db:seed
 
 ## Docker
 
-start all necessary containers:
-
+Initiate all necessary containers:
 ```
 docker-compose up --build
 ```
@@ -60,11 +71,11 @@ docker-compose up --build
 
 ## Launch
 
-Front-end is built in React
-
+Open your preferred web browser and enter the following URL:
 ```
 http://localhost:3000/
 ```
+Ensure that you have initiated the project by running `npm run dev` in the terminal. This command will start the development server and make the website accessible at the specified URL.
 
-all API calls are made to backend using `Header:Authorization` key. The value of this keys is retrived from `.env` files from both projects (Laravel & React) and it must be matching. User's uuid is stored in localStorage.
+All API calls are directed to the backend using the `Header:Authorization` key. This key's value is retrieved from the `.env` files of both Laravel and React projects and must correspond. The user's UUID is stored in localStorage.
 
